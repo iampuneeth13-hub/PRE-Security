@@ -19,3 +19,6 @@ Step 4: Learn the Power of "Find"
 Let's now use one of the handy tools to find. As the name suggests, this built-in utility is used to locate files within the file system. Here's a simple version of 
 the command: find <starting_point> -name <filename>. Since your supervisor mentioned that the file mission_brief.txt resides somewhere in your home directory, begin 
 the home directory symbol: ~. So we will run the command: find ~ -name mission_brief.txt
+
+Step5:history
+In our brief introduction to Linux, the last command that we will cover is history. This command prints the commands used by the user.
