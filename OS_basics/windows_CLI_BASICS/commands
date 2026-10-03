@@ -1,0 +1,15 @@
+Step 1: Where Am I?
+Before doing anything else, open the terminal on the Desktop, and check your current location by typing the command cd
+This shows the full path of the directory you're currently in. On Windows, this is usually your user folder. Please note that the cd command is also used to change 
+the directory, which we will use later in the task.
+
+Step 2: What's Around Me?
+Now, list the contents of the current directory using the command: dir
+This command will list down the files and the folders present in the current directory
+
+Step 3: Are There Hidden Files?
+Some files and folders on Windows are marked as hidden, which means they don't appear in a normal listing. To show everything, including hidden items, run: dir /a
+
+Step 4: Moving Around the Filesystem
+Let's use the cd command to navigate through the folders. We can use the format cd folder_name to move to the specified folder. The command cd Documents will move us 
+to the Documents folder, as shown below. To move back one level, we can use the cd command.
