@@ -1,0 +1,17 @@
+Step 1: Who Am I Logged In As?
+When working on a system, one of the first things to check is which user account you’re using. This matters because different users can have different permissions.
+Run the following command:whoami. This command prints the username of the account you’re currently logged into.
+
+Step 2: What Is the Name of This Computer?
+Every Windows machine has a name. In workplaces, this helps identify network systems. To see the computer’s name, run: hostname.
+
+Step 3: What Version of Windows Is This?
+Next, let’s look at details about the operating system itself. Run:systeminfo
+This command prints a lot of information. Don’t worry, you’re not expected to understand everything yet.
+
+Step 4: How Is This Machine Connected to the Network?
+Finally, let’s look at basic network information. Run: ipconfig
+This shows the machine's network configuration.
+Look for:
+An IPv4 Address
+A Default Gateway
