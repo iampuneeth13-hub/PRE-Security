@@ -1,0 +1,40 @@
+Step 1: "Who Are You Logged in As?"
+The simplest command in Linux also happens to be one of the most useful: whoami
+
+Step 2: "What System Are You On?"
+To see details about the operating system, kernel version, and architecture, use: uname -a
+ubuntu@tryhackme:~$ uname -a
+Linux tryhackme <REDACTED>-aws #17-Ubuntu SMP Mon Sep  2 13:48:07 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+This gives a full line of system information - great for understanding exactly what environment you're working in.
+
+Breakdown of the Information
+Linux: The system is running the Linux kernel.
+tryhackme: The hostname (the computer’s name).
+<REDACTED>-aws: The kernel version installed on the machine.
+x86_64: The hardware platform (also 64-bit).
+GNU/Linux: The operating system type (Linux kernel + GNU tools).
+If you only want the operating system name, you can try: uname
+
+Step 3: Check Disk and Storage Info
+In real-world environments, you’ll oftenneed to check disk usage or available space, especially before running tools or analyzing logs. A simple command for readable output is: df -h
+The -h means "human readable"; it shows sizes like 2G or 500M instead of long bytes-only numbers.
+ubuntu@tryhackme:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        --G   12G   --G  17% /
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+tmpfs           774M  1.2M  773M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           387M  192K  387M   1% /run/user/1000
+tmpfs           387M  172K  387M   1% /run/user/114
+The -h means "human readable"; it shows sizes like 2G or 500M instead of long bytes-only numbers.
+
+Breakdown of the Information
+/dev/root is the main disk of the system with --G total, 12G used, <REDACTED>G free, and is 17% full.
+tmpfs entries are temporary filesystems stored in RAM, not on the physical disk.
+/dev/shm is a shared memory area with 1.9G available and 0 used.
+/run/user/114 is similar temporary storage for another system user, also 387M total and mostly empty.
+
+Step 4: Read a System File
+Linux stores configuration and informational files in the /etc directory.
+To practice navigating and reading files, head into /etc by running cd /etc and then list what’s inside: ls
+Let’s now use cat to read the os-release file that almost every Linux system contains: cat os-release
