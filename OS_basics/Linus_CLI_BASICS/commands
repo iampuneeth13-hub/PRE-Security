@@ -1,0 +1,21 @@
+Step 1: "Where Am I?"
+When you first open a terminal, you might not know what part of the system you're in.
+Use this command to find out: pwd
+
+Step 2: "What's Around Me?"
+Now that you know where you are, let's see what files and folders are here: ls
+This lists the content of the current directory. If we need more details, we can try: ls -l
+
+Hidden Files
+
+In order to get the hidden files in the directory, we can append the command to ls -al, and it will display all the hidden files present in the directory.
+Hidden files aren't really secret; they start with a dot ., and Linux hides such files by default.
+
+Step 3: Let’s Move Around
+To walk through the filesystem, we can use: cd <directory>. For example: cd Documents, and this will change our directory to Documents, as shown below
+To go "back" one level, we will use the command cd ..
+
+Step 4: Learn the Power of "Find"
+Let's now use one of the handy tools to find. As the name suggests, this built-in utility is used to locate files within the file system. Here's a simple version of 
+the command: find <starting_point> -name <filename>. Since your supervisor mentioned that the file mission_brief.txt resides somewhere in your home directory, begin 
+the home directory symbol: ~. So we will run the command: find ~ -name mission_brief.txt
