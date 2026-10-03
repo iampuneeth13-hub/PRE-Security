@@ -13,3 +13,10 @@ Some files and folders on Windows are marked as hidden, which means they don't a
 Step 4: Moving Around the Filesystem
 Let's use the cd command to navigate through the folders. We can use the format cd folder_name to move to the specified folder. The command cd Documents will move us 
 to the Documents folder, as shown below. To move back one level, we can use the cd command.
+
+Step 5: Finding the File on the Disk
+Instead of guessing where the file is, let Windows search for it. Use the following command: dir /s task_brief.txt. The /s flag tells Windows to search all 
+subfolders starting from your current directory and show you the full path if the file exists.
+
+Step 7: Read the File
+Now read the contents of the file using: type task_brief.txt. This will print the contents of the file directly in the command prompt
