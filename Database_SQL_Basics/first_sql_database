@@ -1,0 +1,68 @@
+At the top of the page, you can see the two tables and their columns:
+
+Orders (id,drink,price,time)
+Menu (drink, price)
+Your goal is to practise writing queries using four core SQL parts: SELECT, FROM, WHERE, and ORDER BY.
+
+Step 1: View Everything in a Table (Select + From)
+We start with the most basic query. When we use SELECT *, the * symbol means all columns. The word FROM tells the database which table to use.
+
+Try this query:
+
+SELECT * FROM Orders;
+
+Click Run Query. You should see every order currently stored in the database.
+
+Café SQL app running SELECT * FROM Orders, returning 50 rows with id, drink, price, and time columns
+
+Step 2: Show Only Specific Columns (Select Drink, Price)
+Sometimes we do not need every column. We can choose specific columns by listing them after SELECT.
+
+Try this query:
+
+SELECT drink, price FROM Orders;
+
+This will display only the drink and price columns.
+
+Café SQL app running SELECT drink, price FROM Orders, returning 50 rows showing only the drink and price columns
+
+Step 3: Filter Results (Where)
+The WHERE keyword filters rows. It keeps only rows that match a condition.
+
+Try filtering by drink name:
+
+SELECT * FROM Orders WHERE drink = 'Coffee';
+
+If the database contains coffee orders, you will now see only those rows.
+
+Café SQL app running SELECT * FROM Orders WHERE drink = 'Coffee', returning 10 filtered rows of Coffee orders
+
+Hint: If you are not sure which drink names exist, run:
+
+SELECT * FROM Menu;
+
+Step 4: Sort Results (Order By)
+The ORDER BY keyword sorts results by a column. By default, results are sorted in ascending order (lowest to highest).
+
+Try sorting orders by price (lowest first):
+
+SELECT * FROM Orders ORDER BY price;
+
+Café SQL app running SELECT * FROM Orders ORDER BY price, returning rows sorted by price from lowest to highest
+
+To sort in reverse order (highest to lowest), add DESC.
+
+Try sorting orders by price (highest first):
+
+SELECT * FROM Orders ORDER BY price DESC;
+
+Café SQL app running SELECT * FROM Orders ORDER BY price DESC, returning rows sorted by price from highest to lowest
+
+Step 5: Combine Filtering + Sorting
+Most real queries combine parts together. Here, we filter to keep only one drink type and then sort by price.
+
+Try this query:
+
+SELECT * FROM Orders WHERE drink = 'Coffee' ORDER BY price DESC;
+
+Café SQL app running SELECT * FROM Orders WHERE drink = 'Coffee' ORDER BY price DESC, returning 10 Coffee orders sorted by price descending
