@@ -1,0 +1,36 @@
+Creating Variables
+Going back to our “game”, we need to start by declaring variables. We think of a variable as a space in memory that stores a value and allows us to change
+this value later. For example, we want to keep track of the number of tries (attempts) a user has made, as well as the user’s guess. We can do this by declaring
+  these two variables:
+
+
+let tries = 0;
+let guess = 0;
+The let indicates that we are declaring variables. When the user starts, they have not made any attempts, so tries is set to 0; moreover, we initialize guess
+  to a value that cannot accidentally be the secret number that the user is trying to guess. (On a side note secret is constant and will be covered in the next
+                                                                                              subsection.) Remember that the secret number is between 1 and 20.
+
+Creating Constants
+We use let to declare variables, whose value can change throughout the program; however, we use const to declare constants, whose value cannot change
+  throughout the program.
+
+The secret holds the number that we will try to find by guessing, and it should not change. As already mentioned, to declare a constant, we use the keyword 
+    const, for example, const secret = 12. To ensure that secret gets a new random value each time we run the program, we need to use JavaScript’s
+      Math.random() method.
+
+
+const secret = Math.floor(Math.random() * (20)) + 1;
+Although the details of this expression are not the key purpose of this room, we will share a brief breakdown for the curious readers.
+
+Math.random() gives a random decimal between 0 (inclusive) and 1 (not including 1). Example: 0.372.
+* 20 stretches that range from 0 to (almost) 20. Example: 7.44.
+Math.floor() removes the decimal by rounding down. Example: 7.44 becomes 7.
++ 1 shifts the range from 0–19 to 1–20.
+As a result, secret ends up being 1, 2, 3, …, up to 20.
+
+Displaying Output
+Once the secret number is picked, the program should inform the user that this step is complete. To display on the screen, console.log() can be used. 
+  In the example expression below, the string included between the double quotes will be displayed on screen.
+
+
+console.log("I'm thinking of a number between 1 and 20");
