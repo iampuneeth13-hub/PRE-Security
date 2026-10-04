@@ -1,0 +1,81 @@
+This archive allows you to review the project's evolution, compare implementations, or test each version independently on your local machine. Having all 
+  iterations in one package should make your work more efficient.
+
+Next, we compare the user’s guess to the secret number and give a helpful hint: whether it is out of range, too low, too high, or if they got it right.
+It is like asking ourselves, “Is the number less than 1 or greater than 20?” If the answer is yes, we tell the user that the number is out of range. If
+  the answer is no, we pose a second question: “Is the user’s guess less than the secret number?” If the answer is yes, we tell the user that the guess 
+is too low. Let’s rephrase this in pseudo-code, i.e., English language that is closer to the programming language.
+
+If the guess is less than 1 or greater than 20, print “Out of range.” (If this is not the case, proceed to the next step.)
+Else if the guess is less than the secret number, print “Too low.” (If this is not the case, proceed to the next step.)
+Else if the guess is larger than the secret number, print “Too high.” (If this is not the case, proceed to the next step.)
+Else print “You got it.”
+By reflecting on the above steps, it is only logical that if the guess is not less than or larger than the secret number, it would be equal to the secret
+number. In programming, whenever the condition after the “if” is not true (written as if CONDITION: in Python), the program checks the condition after the
+“else if” (written as elif CONDITION: in Python), and if it is also false, it checks the next “else if”. If there are no more “else if” statements left,
+the program executes the final “else” (written as else: in Python). Let’s convert the above pseudo-code to working Python code.
+
+
+# Give a hint using if / elif / else.
+if guess < 1 or guess > 20:
+    print("That number is out of range. Try again.")
+elif guess < secret:
+    print("Too low, try again.")
+elif guess > secret:
+    print("Too high, try again.")
+else:
+    print("You got it in", tries, "tries!")
+In this implementation, comparing the user’s guess to the chosen secret will lead to various cases:
+
+The user makes a guess outside the allowed bounds, i.e., 1 and 20
+The user’s guess is less than secret
+The user’s guess is greater than secret
+The user’s guess is correct
+If the above looks confusing, consider the following numerical examples.
+
+Numerical Example 1
+
+We assume that the secret number is 10. If the user inputs 30, the first if condition will evaluate to true, and Python will execute the part after if
+  guess < 1 or guess > 20: and print “That number is out of range. Try again.”
+
+Numerical Example 2
+
+We assume that the secret number is 10. Suppose the user inputs 5, the first if condition will evaluate to false because 5 is neither less than 1 nor
+greater than 20. Python will check the condition following the first elif and it will evaluate to true because 5 is indeed less than 10. Consequently, 
+the program will print “Too low, try again.”
+
+Numerical Example 3
+
+We assume that the secret number is 10. Suppose the user inputs 15, the first if condition will evaluate to false because 15 is neither less than 1 nor
+greater than 20. The program will check the condition following the first elif and it will also evaluate to false because 15 is not less than 10. 
+The program will check the condition following the second elif, and this one will evaluate to true, because 15 is larger than 10. As a result, the program 
+will display, “Too high, try again.”
+
+The First Draft
+In this task, we built a working program that you can test for yourself and edit in the attached VM. The main limitation is that this program gives the 
+user one chance. In the next task, we upgrade this program to allow the user an infinite number of tries to make the correct guess. The program below is
+saved as guess_v2.py in the /home/ubuntu/Python-Demo directory.
+
+
+import random  # gives us tools for picking random numbers
+
+secret = random.randint(1, 20)  # a <= secret <= b
+tries = 0
+guess = 0  # start with a value that cannot be the secret (since secret is 1..20)
+
+print("I'm thinking of a number between 1 and 20")
+
+text = input("Take a guess: ")  # input() returns text (a string)
+guess = int(text)  # convert the text to a number
+
+tries = tries + 1  # add 1 try
+
+# Give a hint using if / elif / else.
+if guess < 1 or guess > 20:
+    print("That number is out of range. Try again.")
+elif guess < secret:
+    print("Too low, try again.")
+elif guess > secret:
+    print("Too high, try again.")
+else:
+    print("You got it in", tries, "tries!")
