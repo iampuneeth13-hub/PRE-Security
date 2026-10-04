@@ -1,0 +1,94 @@
+One way to achieve this is to keep prompting the user to make new guesses as long as their guess is wrong, i.e., while their guess is not equal to secret.
+That’s quite easy to express in JavaScript: while (guess !== secret). The !== means “not equal”. This is called a while loop and is written as shown below:
+
+
+// Repeat until the user guesses the secret number.
+while (guess !== secret) {
+    // Loop body: instructions to be repeated
+}
+The next part to decide is what to include in the body of this while loop. Based on the program logic we have built so far, we should repeat the following:
+
+Prompt the user to take a guess
+Convert the user’s input to a number and save it in guess
+Increase the number of tries by one
+Check guess with respect to the lower and upper limits
+If it is within the limits, compare it to the secret number
+Display feedback to the user about their choice
+And we will repeat if the users didn’t make the correct guess.
+
+The JavaScript code with the while loop filled is shown below.
+
+
+// Repeat until the user guesses the secret number.
+while (guess !== secret) {
+    const text = await rl.question("Take a guess: "); // rl.question() returns text (a string)
+    guess = parseInt(text, 10); // convert the text to a number
+
+    tries = tries + 1; // add 1 try
+
+    // Give a hint using if / else if / else.
+    if (guess < 1 || guess > 20) {
+        console.log("That number is out of range. Try again.");
+    } else if (guess < secret) {
+        console.log("Too low, try again.");
+    } else if (guess > secret) {
+        console.log("Too high, try again.");
+    } else {
+        console.log("You got it in", tries, "tries!");
+    }
+}
+Putting it All Together
+The program we have constructed so far is listed below and is also available on the system as guess_v3.js.
+
+
+import * as readline from "node:readline/promises";
+import { stdin as input, stdout as output } from "node:process";
+
+const rl = readline.createInterface({ input, output });
+
+try {
+    const secret =
+        Math.floor(Math.random() * (20)) + 1; // 1 <= secret <= 20
+    let tries = 0;
+    let guess = 0; // start with a value that cannot be the secret (since secret is 1..20)
+
+    console.log("I'm thinking of a number between 1 and 20");
+
+    // Repeat until the user guesses the secret number.
+    while (guess !== secret) {
+        const text = await rl.question("Take a guess: "); // rl.question() returns text (a string)
+        guess = parseInt(text, 10); // convert the text to a number
+
+        tries = tries + 1; // add 1 try
+
+        // Give a hint using if / else if / else.
+        if (guess < 1 || guess > 20) {
+            console.log("That number is out of range. Try again.");
+        } else if (guess < secret) {
+            console.log("Too low, try again.");
+        } else if (guess > secret) {
+            console.log("Too high, try again.");
+        } else {
+            console.log("You got it in", tries, "tries!");
+        }
+    }
+} finally {
+    rl.close();
+}
+You can test it on the system by running node guess_v3.js; it can be found in /home/ubuntu/JavaScript-Demo. Every time you rerun the program, it should
+pick a new secret number for you to guess.
+
+
+Terminal
+ubuntu@tryhackme:~/JavaScript-Demo$ node guess_v3.js
+I'm thinking of a number between 1 and 20
+Take a guess: 10
+Too low, try again.
+Take a guess: 15
+Too high, try again.
+Take a guess: 13
+Too low, try again.
+Take a guess: 14
+You got it in 4 tries!
+It should be noted that the file node guess_v4.js, on the VM and in the zip file attached to Task 3, further improves this program. You are encouraged 
+to take a look; however, it is not critical for this introductory room.
