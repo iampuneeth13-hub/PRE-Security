@@ -1,0 +1,86 @@
+It is too hard to guess the number when given a single chance. To make this game more interesting, it should provide the user with at least a few chances. 
+We will be highly tolerant and allow the user as many attempts as needed to find the secret number. To give the user more than one chance, we need to use 
+our secret weapon: loops! In programming, loops, or more formally, iterations, allow us to execute the same lines of code multiple times. In more formal 
+phrasing, we can iterate over the same code block as long as a specific condition holds.
+
+Let’s look at a few examples of iteration in our daily lives. Consider the case where you want to buy a new t-shirt: you will see one shop after another
+until you find one that suits you. The condition here is finding a suitable t-shirt. Consider another example where you are searching for an empty parking 
+space in a vast parking lot. You will check one row of cars after another until you finally find a space. The condition here is finding a suitable parking space.
+
+Back to our game, we will keep repeating the code we wrote in Task 3 until the user’s guess matches the secret number. In Python, “does not equal” is written
+as !=. In other words, the condition “guess does not equal secret” is written as guess != secret. To write this as a while loop, we use the form while 
+CONDITION:; in our case, it is while guess != secret:.
+
+Let’s paste the code from Task 3 in the body of our while loop.
+
+
+# Repeat until the user guesses the secret number.
+while guess != secret:
+    text = input("Take a guess: ")  # input() returns text (a string)
+    guess = int(text)  # convert the text to a number
+    
+    tries = tries + 1  # add 1 try
+
+    # Give a hint using if / elif / else.
+    if guess < 1 or guess > 20:
+        print("That number is out of range. Try again.")
+    elif guess < secret:
+        print("Too low, try again.")
+    elif guess > secret:
+        print("Too high, try again.")
+    else:
+        print("You got it in", tries, "tries!")
+The code above will execute as follows. First, Python will check the condition after the while; if it is true, it will run all the indented lines. If
+the condition is false, it terminates.
+
+Numerical Example 1
+
+We assume that the secret number is 10. In the first run, the guess is 0. The while condition will evaluate to true because 10 is not equal to 0. The
+program will ask the user to “Take a guess,” and it will proceed from there.
+
+Numerical Example 2
+
+We assume that the secret number is 10. If the user entered 5 earlier, it means they did not guess the number in the previous attempt. The while condition
+will evaluate to true because 10 is not equal to 5. The program will give the user another chance and prompt them to “Take a guess.”
+
+Numerical Example 3
+
+We assume that the secret number is 10. If the user entered 10 earlier, it means they successfully guessed the number in the previous attempt. Let’s see 
+if the program will prompt them for another guess. The while loop will evaluate to false because 10 is equal to 10; in other words, 10 != 10 is false. 
+The indented code block within the while statement will no longer execute.
+
+The Second Draft
+In this task, we have completed coding our game. You can test it for yourself and edit in the attached VM. The program below is saved as guess_v3.py in the
+/home/ubuntu/Python-Demo directory.
+
+
+import random  # gives us tools for picking random numbers
+
+# ----------------------------
+# Guess the Number (Beginner Demo)
+# ----------------------------
+# The computer picks a secret number.
+# The player keeps guessing until they find it.
+
+secret = random.randint(1, 20)  # a <= secret <= b
+tries = 0
+guess = 0  # start with a value that cannot be the secret (since secret is 1..20)
+
+print("I'm thinking of a number between 1 and 20")
+
+# Repeat until the user guesses the secret number.
+while guess != secret:
+    text = input("Take a guess: ")  # input() returns text (a string)
+    guess = int(text)  # convert the text to a number
+    
+    tries = tries + 1  # add 1 try
+
+    # Give a hint using if / elif / else.
+    if guess < 1 or guess > 20:
+        print("That number is out of range. Try again.")
+    elif guess < secret:
+        print("Too low, try again.")
+    elif guess > secret:
+        print("Too high, try again.")
+    else:
+        print("You got it in", tries, "tries!")
