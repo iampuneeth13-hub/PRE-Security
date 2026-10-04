@@ -1,0 +1,56 @@
+The program needs to start by picking a random secret number between 1 and 20. Then the user will begin making a guess after another till they get it right.
+  This approach requires two variables: secret and guess. We can also track the number of tries (attempts) it took the user to find the number; for this,
+    we will use the variable tries.
+
+Python offers the random.randint() method, which returns a random integer within the specified bounds. For example, random.randint(1, 20) returns a random
+  number between 1 and 20. Since the user has not made any attempts, we set tries to 0; moreover, we set guess to a value outside the valid range. To tell
+  the user that the program picked a number, we use Python’s print() method to display an informational message on the screen. We show the current Python
+    script below:
+
+
+import random  # gives us tools for picking random numbers
+
+secret = random.randint(1, 20)  # a <= secret <= b
+tries = 0
+guess = 0  # start with a value that cannot be the secret (since secret is 1..20)
+
+print("I'm thinking of a number between 1 and 20")
+This code snippet achieves the following:
+
+Use the random.randint() method from the random library to pick a random number between 1 and 20 and save it to secret.
+Creates two variables, tries and guess, and sets them to 0.
+Display a message on the screen to inform the user that a number has been picked.
+With our variables ready, we prompt the user to make a guess and set guess accordingly. We begin by saving the user’s input to a temporary text variable,
+  then use Python’s int() to convert it to an integer. Furthermore, we need to increment tries each time the user makes a guess.
+
+
+text = input("Take a guess: ")  # input() returns text (a string)
+guess = int(text)  # convert the text to a number
+
+tries = tries + 1  # add 1 try (written long-form for clarity)
+So far, our program does the following:
+
+Pick a random number between 1 and 20 and save it in secret.
+Ask the user to take a guess, convert it to an integer, and save it in guess.
+Increment tries by 1.
+To check whether the user made a correct guess, we should be able to compare against various cases; this requires conditional statements and comparison 
+  operators.
+
+The Incomplete Draft
+In this task, we built a basic program that you can test for yourself and edit in the attached VM. Although this program picks a random number and reads
+  the user’s input, it does not compare the two, which makes it practically useless as a game. In the next task, we upgrade this program so that it gives
+    the user some feedback on how their guess compares to the secret number. The program below is saved as guess_v1.py in the /home/ubuntu/Python-Demo directory.
+
+
+import random  # gives us tools for picking random numbers
+
+secret = random.randint(1, 20)  # a <= secret <= b
+tries = 0
+guess = 0  # start with a value that cannot be the secret (since secret is 1..20)
+
+print("I'm thinking of a number between 1 and 20")
+
+text = input("Take a guess: ")  # input() returns text (a string)
+guess = int(text)  # convert the text to a number
+
+tries = tries + 1  # add 1 try
