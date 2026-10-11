@@ -1,0 +1,134 @@
+Opening question: If someone's listening to every single piece of data travelling between two people, how can those two people still share secrets?
+Understanding the Basics
+Before we jump into symmetric encryption, let's define the core terms we'll use throughout this room:
+
+Plaintext - A message you can read normally. Like HELLO or Patient name: Alice Smith.
+
+Ciphertext - A scrambled version that's not supposed to make sense. Like KHOOR or Sdwlhqw qdph: Dolfh Vplwk.
+
+Key - The secret ingredient that controls how scrambling and unscrambling work. Think of it as a password that the algorithm uses.
+
+Algorithm - The public recipe—the set of steps that explain how to use the key on the message. Everyone can know the algorithm. Security comes from keeping the key secret.
+
+Real-world cryptography is way more sophisticated than what we'll use here. But the basic pattern stays the same:
+
+Encryption process: plaintext + encryption algorithm + key  → ciphertext
+
+Block diagram of encryption using a secret key
+
+and then
+
+Decryption process: ciphertext + decryptiong algorithm + key   → plaintext
+
+Block diagram of decryption using a secret key
+
+The Lockbox Analogy
+Think about a physical lockbox:
+
+The algorithm is how the lock works. Anyone can see you insert a key and turn it, hence it's not secret.
+The key is your specific metal key. Only people with that exact key can open your box.
+The plaintext is the letter inside the box.
+The ciphertext is that locked box travelling through the postal system.
+Nobody tries to hide how locks work to make them secure. Security comes from keeping your key private and this same principle applies to cryptography. Algorithms are usually
+public and tested by experts worldwide. The security comes from keeping keys secret.
+
+To put it more practically, Alice wants to send Bob a secret letter, but it must go through the public postal system, where anyone could open it and read it.
+
+Here's what she does:
+
+She writes her message (the plaintext) on paper.
+She puts the letter in a sturdy lockbox.
+She locks it with a padlock using her key.
+She sends the locked box (the ciphertext) through the mail.
+When Bob gets the box, he uses his copy of the same key to unlock it and read the message. Anyone who intercepts the box along the way sees a locked metal box. Without the key,
+it's useless. The message stays private.
+
+That's symmetric encryption in a nutshell: one key locks the box, the same key unlocks it.
+
+Illustration of symmetric encryption. Alice and Bob each hold a matching key. Alice sends a locked box labeled "CIPHERTEXT" through a cloud filled with masked attackers. A white
+arrow shows the box reaching Bob, who can open it with his copy of the same key.
+
+Plaintext versus Ciphertext
+Now, how does this look when dealing with text or data? Say Alice wants to send:
+
+HELLO
+That's the plaintext—the readable message.
+
+Alice uses an algorithm and a secret key to scramble it. After scrambling, it becomes:
+
+KHOOR
+That's the ciphertext. To anyone without the key, KHOOR is meaningless. The key point: ciphertext should look like random nonsense to anyone who doesn't have the key.
+
+Bob receives KHOOR, uses the same key and algorithm, and unscrambles it back to HELLO.
+
+The Caesar Cipher: Algorithm Plus Key
+To make this concrete, we'll use something called the Caesar cipher. It's straightforward, which makes it perfect for learning (but terrible for real security—more on that in a minute).
+
+The Caesar cipher is named after Julius Caesar, who reportedly used this technique over 2000 years ago to send military messages. Even back then, people understood the value of
+keeping communications secret.
+
+How It Works
+
+The Caesar cipher shifts each letter in your message by a fixed number of positions in the alphabet. That fixed number is your key.A Caesar cipher wheel showing how letters are
+shifted by a key of +3. The outer ring lists the plaintext alphabet, and the inner ring shows the corresponding ciphertext letters three positions ahead.
+
+Let's say the key is 3:
+
+A shifts forward 3 spots to become D
+B becomes E
+C becomes F
+and so on.
+X becomes A (it wraps around to the start)
+Y becomes B
+Z becomes C
+If Alice wants to encrypt HELLO with a key of 3:
+
+H → K
+E → H
+L → O
+L → O
+O → R
+So HELLO becomes KHOOR.
+
+To decrypt KHOOR, Bob shifts each letter backwards by 3:
+
+K → H
+H → E
+O → L
+O → L
+R → O
+He gets HELLO again. Magic? Nope. Math.
+
+With the Caesar cipher:
+
+The algorithm (shift each letter by some number) is completely public. Everyone can know how it works.
+The key (the number 3 in our example) is what's secret. Only Alice and Bob know this number.
+If someone intercepts KHOOR but doesn't know the key, they'd have to try all 25 possible shifts (1 through 25) to find the right one. For a human, that's tedious; for a computer,
+that takes about a millisecond.
+
+Here's the thing: The Caesar cipher is not secure and is never used in real systems. It's way too easy to compromise and decrypt messages. We're using it here purely because 
+it's simple to understand and shows you how keys and algorithms work together.
+
+Real algorithms like AES (Advanced Encryption Standard) are vastly more complex and secure. But they follow the same basic idea: algorithm + key + plaintext → ciphertext.
+
+Symmetric Encryption Explained
+The Caesar cipher is an example of symmetric encryption. This means that:
+
+The same key encrypts (locks) and decrypts (unlocks) the message.
+Both sender and receiver need a copy of that key.
+The key has to stay secret from everyone else.
+Some of the benefits of using symmetric encryption are:
+
+It's fast. Symmetric algorithms can churn through huge amounts of data really quickly.
+It's efficient. Perfect for encrypting files, hard drives, and network traffic where speed matters.
+However, there's a catch to this efficiency:
+
+How do Alice and Bob share that key safely in the first place?
+
+If they send the key over the internet in plain view, an eavesdropper can grab it. Then that eavesdropper can decrypt every future message.
+
+You might think, "Just encrypt the key!",  but then you'd need another key to encrypt that key, and then another key for that key, and you see the problem. Infinite regress.
+
+This is called the key distribution problem, and it's the Achilles' heel of symmetric encryption when used alone.
+
+We'll solve this in the next task with asymmetric encryption—a clever approach that uses two different keys instead of one.
