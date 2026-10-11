@@ -1,0 +1,39 @@
+In the previous task, you learned the importance of understanding your environment by mapping your client's infrastructure and gaining visibility into the assets you're 
+  responsible for defending. Now, we'll build on that foundation by focusing on how those systems can be protected. As a defender, your role is to understand what exists, 
+  consider how it could be abused, and apply protections to reduce risk.
+
+An illustration of a city with a wall surrounding it representing client infrastructure. The city has red lines running through the streets to represent the weaknesses and 
+    protections facing the infrastructure.
+
+The Defender Mindset
+As a defender, your success relies on more than just knowing your environment. You must understand the attackers who want to break into your systems. Instead of viewing your
+    system as separate parts, see them as an interconnected chain. Attackers rarely target a single system. They compromise one asset and pivot to the next, building to their goal.
+
+For example, a malicious email attachment might affect an employee's workstation. From there, an attacker could steal usernames and passwords, access a mail server, and
+  eventually reach sensitive data stored on a database server. Each step builds on the last and is an opportunity for a defender to apply security measures to protect systems.
+
+Key Defender Principles
+
+Threat anticipation: Review the systems you aim to protect and ask, "What if?" Imagine realistic paths an attacker may take to achieve their goal.
+Attack awareness: Attacks typically follow recognizable stages. Studying common attack chains and frameworks is incredibly useful for defenders.
+Risk prioritization: Not every part of your system carries equal risk. Defenders should identify high-value systems and targets.
+Continuous adaptation: Defense is not a one-time set up. Threats and attackers evolve, techniques change, and vulnerabilities emerge.
+Available Defenses: Tools to Protect Your City
+You previously mapped your client's city to know what's inside. Homes, shops, and public buildings, a post office, a city gate, and everything that lies outside the city walls. 
+  Now it's time to explore protection. Defenders use several tools that work together, like having locks on doors, guards at the gate, and alarms inside buildings. No single 
+  tool stops every bad guy or malicious attempt, but using a layered set makes it much harder for attackers to succeed. Let's review your client's infrastructure once more and 
+    examine potential risks and available protections to ensure their safety.
+
+System or Infrastructure Component	What Could Go Wrong	Defenses You'll Use
+Employee Devices	Someone clicks a bad link or downloads unsafe software	Antivirus to detect bad programs
+Regular software updates
+Web Server	Attackers try to break into the website	Only allow safe traffic
+Use secure communication
+Mail Server	Malicious or deceptive emails	Spam filters
+Scan attachments
+Firewall	Strangers from the internet try to break in	Firewall rules that control access
+Block known troublemakers
+The Outside Internet	External threats come from here	Restrict inbound traffic
+Monitor for suspicious activity
+Don't worry if some of these defenses feel unfamiliar. As you progress further into defensive security, you'll have many opportunities to explore these tools and protections 
+    in detail. This list isn't exhaustive, but it is designed to help you understand how defenders match protections to different systems.
