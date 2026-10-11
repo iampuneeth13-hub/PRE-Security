@@ -1,0 +1,41 @@
+In the previous task, we explored the basics of defensive security. Now, we'll focus on what defenders are responsible for protecting and why understanding the 
+  environment matters. Before you can protect anything, you need clear visibility into what exists and how it fits together.  A simple yet powerful way to think 
+    about this is to imagine your client's infrastructure as a bustling city. Just like city guards need to know the layout, watch for trouble, and know how to respond,
+    defenders must understand their environment to keep it safe.
+
+An illustration of a city surrounded by a wall that represents the client's infrastructure.
+
+The table below uses a simple city analogy to illustrate how defensive security questions translate into real-world security concepts.
+
+Defensive Question	City Analogy	Security Equivalent
+What are you protecting? (Systems and Infrastructure)	Homes, buildings, people	Client servers, data, workstations, users
+Can you see what you are protecting? (Visibility)	Cameras, reports, patrols	Logs, network traffic, alerts
+What classifies suspicious behavior?	Locked door attempts, circling cars	Repeated logins, unusual IP addresses
+How do you stop a threat?	Police, blocked roads, curfews	Firewall rules, IP address blocking
+What Can You Do as a Defender?
+Once you understand what systems exist and how they can be protected, defenders typically organize their work around a set of foundational security concepts. These concepts 
+  apply across nearly all environments and will appear repeatedly as you continue learning defensive security.
+
+Prevention: Putting security controls in place to stop attacks before they happen, such as firewalls, antivirus software, and regular patching.
+Detection: Monitoring systems and networks to identify suspicious or malicious activity through logs, alerts, and security tools.
+Mitigation: Taking action during an incident to limit damage, such as blocking traffic, isolating affected systems, or disabling compromised accounts.
+Analysis: Investigating what happened, how it happened, and which systems were affected by reviewing logs and other evidence.
+Response and Improvement: Recovering from the incident and improving defenses to reduce the risk of similar attacks in the future.
+These concepts form the foundation of defensive security and will help guide your thinking about protecting systems throughout this room and beyond.
+
+What Is Your Scope?
+Defenders are not responsible for protecting everything on the internet. They focus on protecting what belongs to their organization or client. This includes the devices people
+  use every day, servers that host applications and data, and the networks that connect systems together. Before any defenses can be applied, defenders must understand what 
+    systems exist, what they are used for, and how they fit into the overall environment.
+
+An illustration of binoculars and a computer monitor showing a city outline which represents a defender's scope.
+
+Let's go back to the city analogy we previously used and hone in on aspects of client infrastructure. The list below is not exhaustive, but it will give you a good idea of a 
+      sample network you may be tasked with defending in the future.
+
+System or Infrastructure Component	Purpose	City Analogy
+Employee Devices	Where users work and access company resources	Homes
+Web Server	Hosts websites or applications accessed by users	Shop/Public buildings
+Mail Server	Sends and receives email for the organization	Post office
+Firewall	Controls what traffic is allowed in or out	City gate
+Internet	External networks not controlled by the organization	Anything outside of the city
