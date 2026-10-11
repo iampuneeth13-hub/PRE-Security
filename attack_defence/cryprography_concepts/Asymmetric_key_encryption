@@ -1,0 +1,114 @@
+The Key Distribution Problem
+In the last task, we saw how symmetric encryption works. Alice and Bob use the same key for both encryption and decryption. It's fast and efficient.
+
+However, we also hit a wall: how do they share that key safely in the first place?
+
+If they send it in plaintext, an attacker grabs it. If they encrypt the key, they need another key, which brings us right back to the same problem.
+
+Enter asymmetric encryption.
+
+Two Keys Instead of One
+Asymmetric encryption uses two mathematically linked keys:
+
+A public key that anyone can know and use.
+A private key that only one person keeps secret.
+Here's the clever part:
+
+If you encrypt something with someone's public key, only their private key can decrypt it.
+If you encrypt something with your private key, anyone with your public key can decrypt it (this is primarily used for digital signatures, which we won't delve into here).
+The two keys are connected by some serious maths, but it would take an ordinary computer hundreds or even thousands of years to recover the private key from the public key. 
+This computational difficulty is what makes asymmetric encryption secure.
+
+The Mailbox Analogy
+Illustration of asymmetric encryption. Alice places an envelope into a public mailbox labeled “Public Key (Anyone can use this).” Bob kneels beside it holding a key labeled 
+“Private Key (Only Bob can open this),” representing the use of different keys for encryption and decryptionLet us use a physical mailbox on a street corner as an example:
+
+The mail slot at the top is the public key. Anyone walking by can drop off a letter. It's completely open and accessible.
+The locked door at the front is the private key. Only the mailbox owner has the key to open it and grab the letters.
+When Alice wants to send Bob a secret:
+
+Alice finds Bob's public key (the mail slot). This isn't a secret—Bob can post it on his website or email it around.
+Alice writes her message, encrypts it with Bob's public key, and sends it.
+Only Bob can decrypt it because he is the only one with the private key (the key to the door).
+Even if an attacker intercepts the encrypted message, they can't decrypt it without Bob's private key.
+
+Solving the Key Distribution Problem
+With asymmetric encryption, Alice and Bob don't need to share a secret key beforehand. A simple flow of events can be as follows:
+
+Bob creates a public key and a private key on his computer. He keeps the private key to himself and shares the public key with the world.
+Alice grabs Bob's public key (maybe from his website or a key server).
+Alice encrypts her message using Bob's public key and sends it off.
+Bob receives it and decrypts it using his private key.
+At no point did they need to exchange a key over the network secretly. The only key that travelled publicly was Bob's public key, which isn't secret by design. That's the
+solution to the key distribution problem.
+
+Alice and Bob using a public and private key pair to exchange messages
+
+Real-world Use: HTTPS
+The most common everyday use of asymmetric encryption is in HTTPS—the secure protocol you use whenever you see that padlock in your browser.
+
+Here's what happens when you visit https://google.com:
+
+Your browser requests the website's public key.
+The website sends back its public key wrapped in a certificate (more on this shortly).
+Your browser and the website use asymmetric encryption to agree on a shared secret (a symmetric key) without anyone else being able to see it.
+From there on, they switch to fast symmetric encryption using that shared secret for the rest of the session.
+This combo is sometimes called a hybrid approach:
+
+Asymmetric encryption solves the problem of key distribution.
+Symmetric encryption handles the heavy lifting because it's way faster.
+You might wonder: how does Alice know the public key really belongs to Bob, and not to an attacker pretending to be Bob? That's where certificates come in.
+
+A certificate is a digital document that:
+
+Contains someone's public key.
+States who that key belongs to (like example.com).
+A trusted authority digitally signs it, called a Certificate Authority (CA).
+Your browser and operating system come preloaded with a list of trusted CAs. When a website hands over a certificate:
+
+Your browser checks that a trusted CA signed it.
+Your browser checks that it's still valid (not expired or revoked).
+If everything looks good, your browser shows the padlock and trusts the public key.
+If something's off—perhaps the certificate has expired or was signed by an untrusted authority—your browser displays a warning and may refuse to connect.
+
+Viewing a Certificate In Your Browser
+You can peek at the certificate for any HTTPS site right now. These steps can guide you to view certificates:
+
+Visit any HTTPS site (try https://www.tryhackme.com).
+Click the padlock icon in the address bar.
+Look for something like "Certificate", "Connection is secure", or "View certificate".
+A window opens showing details like:
+Issued to: The website's domain.
+Issued by: The CA that signed it.
+Valid from / Valid until: The certificate's expiration dates.
+Accessing TryHackMe's certificate detailsCertificate details for tryhackme.com
+
+This is how your browser knows it's talking to the real website and not an attacker's fake version.
+
+Symmetric vs Asymmetric: Side by Side
+In summary, let's compare the two approaches we've covered:
+
+Feature	Symmetric Encryption	Asymmetric Encryption
+Number of keys	One key for both encrypting and decrypting	Two keys: public and private
+Key sharing	Both people need the same secret key	Public key can be shared openly
+Speed	Very fast	Slower (used for small amounts of data)
+Main use	Encrypting bulk data (files, network traffic)	Sharing keys, securely and digital certificates
+Analogy	One key locks and unlocks a box	A mailbox: anyone posts, only the owner retrieves
+In practice, real systems use both:
+
+Asymmetric encryption initiates a connection and securely shares a symmetric key.
+Symmetric encryption takes over for the remainder of the session to efficiently handle data.
+This is how HTTPS, VPNs, and encrypted messaging apps all operate.
+
+Answer the questions below
+In asymmetric encryption, which key stays secret?
+private key
+
+With asymmetric encryption, Alice can encrypt a message using Bob's public key, and only Bob's private key can decrypt it. Yay or Nay?
+Yay
+
+What problem does asymmetric solve that symmetric cannot?
+key distribution
+
+After initial asymmetric exchange in HTTPS, what encryption type handles bulk data?
+symmetric
